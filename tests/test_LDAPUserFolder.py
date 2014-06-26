@@ -1048,7 +1048,7 @@ class TestLDAPUserFolder(LDAPTest):
         self.failUnless(nonexisting is None)
     
         # The retrieval above will add the invalid user to the negative cache
-        negative_cache_key = '%s:%s' % ('invalid', sha.new('').digest())
+        negative_cache_key = '%s:%s' % ('invalid', sha.new('').hexdigest())
         self.failIf(acl._cache('negative').get(negative_cache_key) is None)
     
         # Expiring the user must remove it from the negative cache
